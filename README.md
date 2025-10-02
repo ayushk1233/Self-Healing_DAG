@@ -189,35 +189,21 @@ Enter text (or command): It was okay, nothing special.
 
 ## 🔄 Pipeline Architecture
 
-## Pipeline Architecture
+## LangGraph DAG Architecture
 
-### DAG Flow
-
-````
-Input Text
-    ↓
-[Inference Node]
-    ↓
-Model Prediction + Confidence Score
-    ↓
-[Confidence Check Node]
-    ↓
-Confidence >= Threshold?
-    ↓                ↓
-   YES              NO
-    ↓                ↓
-Accept          [Fallback Node]
-    ↓                ↓
-    ↓          Mode Selection
-    ↓          ↙           ↘
-    ↓     User Input    Backup Model
-    ↓          ↓           ↓
-    ↓     Manual       Zero-Shot
-    ↓     Override     Prediction
-    ↓          ↓           ↓
-    └─────────┴───────────┘
-              ↓
-       Final Decision
+```mermaid
+flowchart TD
+    A[Input Text] --> B[Inference Node]
+    B --> C[Prediction + Confidence]
+    C --> D[Confidence Check Node]
+    D -->|confidence >= threshold| E[Accept]
+    D -->|confidence < threshold| F[Fallback Node]
+    F -->|User Mode| G[User Feedback]
+    F -->|Backup Mode| H[Backup Model]
+    G --> I[Final Decision]
+    H --> I
+    E --> I
+```
 
 ### Node Descriptions
 
@@ -239,7 +225,7 @@ View logs:
 
 ```bash
 cat logs/pipeline.log
-````
+```
 
 ## 🤖 Model Details
 
@@ -251,6 +237,32 @@ cat logs/pipeline.log
   - Batch Size: 16
   - Learning Rate: 2e-5
   - Expected Accuracy: ~90%+
+
+## 🤗 Model Hosting on Hugging Face
+
+The fine-tuned DistilBERT model is hosted on the Hugging Face Hub for easy access and deployment. You can access it at: https://huggingface.co/ayushk1233/self-healing-sst2
+
+### Using the Model with Transformers
+
+```python
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+# Load model and tokenizer from Hugging Face Hub
+tokenizer = AutoTokenizer.from_pretrained("ayushk1233/self-healing-sst2")
+model = AutoModelForSequenceClassification.from_pretrained("ayushk1233/self-healing-sst2")
+```
+
+### Local Model Usage
+
+If you prefer to use the model locally:
+
+1. Download the model files from the repository or use the provided `model/` directory
+2. Load using local path:
+
+```python
+tokenizer = AutoTokenizer.from_pretrained("path/to/model")
+model = AutoModelForSequenceClassification.from_pretrained("path/to/model")
+```
 
 ## 🔜 Future Enhancements
 
