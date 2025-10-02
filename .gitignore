@@ -1,0 +1,18 @@
+# Python env
+venv/
+__pycache__/
+*.pyc
+
+# Model artifacts
+model/
+*.bin
+*.pt
+*.safetensors
+*.h5
+*.zip
+
+# Logs (optional, keep small ones if needed)
+*.log
+
+# macOS
+.DS_Store

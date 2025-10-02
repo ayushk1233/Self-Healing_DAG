@@ -1,0 +1,75 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "sst2",
+  "dataset_size": 5022007,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/stanfordnlp/sst2@8d51e7e4887a4caaa95b3fbebbf53c0490b58bbb/data/train-00000-of-00001.parquet": {
+      "num_bytes": 3110458,
+      "checksum": null
+    },
+    "hf://datasets/stanfordnlp/sst2@8d51e7e4887a4caaa95b3fbebbf53c0490b58bbb/data/validation-00000-of-00001.parquet": {
+      "num_bytes": 72813,
+      "checksum": null
+    },
+    "hf://datasets/stanfordnlp/sst2@8d51e7e4887a4caaa95b3fbebbf53c0490b58bbb/data/test-00000-of-00001.parquet": {
+      "num_bytes": 147787,
+      "checksum": null
+    }
+  },
+  "download_size": 3331058,
+  "features": {
+    "labels": {
+      "names": [
+        "negative",
+        "positive"
+      ],
+      "_type": "ClassLabel"
+    },
+    "input_ids": {
+      "feature": {
+        "dtype": "int32",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "attention_mask": {
+      "feature": {
+        "dtype": "int8",
+        "_type": "Value"
+      },
+      "_type": "List"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 8353065,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 4698441,
+      "num_examples": 67349,
+      "dataset_name": "sst2"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 106470,
+      "num_examples": 872,
+      "dataset_name": "sst2"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 217096,
+      "num_examples": 1821,
+      "dataset_name": "sst2"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
