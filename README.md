@@ -4,6 +4,8 @@ A self-healing sentiment ## Fallback Mechanisms
 
 The system provides two fallback mechanisms for handling low-confidence predictions:
 
+DEMONSTRATION VIDEO LINK : https://www.loom.com/share/c2e7cc4d4003483484fd0d06c31a170f?sid=f0cbd713-97c8-406f-a77f-407d5e2ae0d3
+
 ### 1. User-in-the-Loop## Model Details
 
 ### Primary Model
